@@ -19,7 +19,7 @@ fn main() {
         Command::new("sh")
             .current_dir("./libtiff")
             .arg("configure")
-            .arg("--target=wasm32-unknown-emscripten")
+            .arg("--host=wasm32-unknown-emscripten")
             .spawn()
             .unwrap()
             .wait()
@@ -81,7 +81,6 @@ fn main() {
         .flag("-Wno-format")
         .include("./libtiff/port")
         .include("./libtiff/libtiff")
-        .include("/usr/include")
-        .include("/usr/include/x86_64-linux-gnu")
+        .include("../../../repo/emsdk/upstream/emscripten/cache/sysroot/include")
         .compile("tiff")
 }

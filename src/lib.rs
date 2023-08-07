@@ -20,7 +20,7 @@ pub fn generate_pdf(ptr: *const u8, len: usize) -> *const u8 {
 
 #[no_mangle]
 pub fn buf_len() -> usize {
-    BUF.0.borrow().as_ref().unwrap().len()
+    BUF.0.borrow().as_ref().expect("no buffer.").len()
 }
 
 #[no_mangle]
