@@ -8,5 +8,4 @@ edition = "2021"
 crate-type = ["cdylib"]
 
 [dependencies]
-base64 = "0.21"
 libtiff-sys = { path = "libtiff-sys" }
