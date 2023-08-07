@@ -1,0 +1,12 @@
+[package]
+name = "t2p"
+version = "0.1.0"
+authors = ["benki"]
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+base64 = "0.21"
+libtiff-sys = { path = "libtiff-sys" }

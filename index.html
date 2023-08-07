@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <script async src="t2p.js"></script>
+    <script>
+        Module = {};
+        Module["onRuntimeInitialized"] = async () => {
+            const response = await fetch("test.tif");
+            const data = await response.arrayBuffer();
+            const array = new Uint8Array(data);
+            const ptr = Module._malloc(array.length);
+            Module.HEAPU8.set(array, ptr);
+            const base64 = ccall("generate_pdf", "string", ["number", "number"], [ptr, array.length]);
+            Module._free(ptr);
+            //document.location.href = "data:application/pdf;base64," + base64;
+            const a = document.createElement("a");
+            document.body.appendChild(a);
+            a.download = "test.pdf";
+            a.href = "data:application/pdf;base64," + base64;
+            a.click();
+            a.remove();
+        };
+    </script>
+</body>
+
+</html>

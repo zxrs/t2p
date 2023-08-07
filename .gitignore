@@ -12,3 +12,9 @@ Cargo.lock
 
 # MSVC Windows builds of rustc generate these, which store debugging information
 *.pdb
+
+libtiff-sys/Cargo.lock
+libtiff-sys/target/
+t2p.js
+t2p.wasm
+test.tif
